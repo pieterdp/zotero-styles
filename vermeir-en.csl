@@ -12,7 +12,7 @@
 	</info>
 	<macro name="author">
 		<choose>
-			<if variable="collection-author" match="any">
+			<if variable="container-author" match="any">
 				<text macro="container-author" />
 			</if>
 			<else>
@@ -201,7 +201,7 @@
 				<else-if type="webpage post-weblog" match="any">
 					<group delimiter=", " prefix="in ">
 						<text variable="URL" prefix="&#60;" suffix="&#62;" />
-						<date variable="accessed" form="numeric" prefix="laatst geraadpleegd op " delimiter="-">
+						<date variable="accessed" form="numeric" prefix="laatst geraadpleegd op ">
 							<date-part name="day" form="numeric-leading-zeros" />
 							<date-part name="month" form="numeric-leading-zeros" />
 							<date-part name="year" form="long" />
