@@ -157,12 +157,40 @@
 	</macro>
 	<macro name="title-note">
 		<choose>
+		<if position="subsequent">
+			<choose>
+			<if type="book thesis report" match="any">
+				<choose>
+				<if variable="title-short" match="any">
+					<text variable="title-short" font-style="italic" suffix="," />
+				</if>
+				<else>
+					<text variable="title" form="short" font-style="italic" suffix="," />
+				</else>
+				</choose>
+			</if>
+			<else>
+				<choose>
+				<if variable="title-short" match="any">
+					<text variable="title-short" prefix="&#8220;" suffix="&#8221;," />
+				</if>
+				<else>
+					<text variable="title" form="short" prefix="&#8220;" suffix="&#8221;," />
+				</else>
+				</choose>
+			</else>
+			</choose>
+		</if>
+		<else>
+			<choose>
 			<if type="book thesis report" match="any">
 				<text variable="title" font-style="italic" suffix="," />
 			</if>
 			<else>
 				<text variable="title" prefix="&#8220;" suffix="&#8221;," />
 			</else>
+			</choose>
+		</else>
 		</choose>
 	</macro>
 	<macro name="editor-note">
@@ -252,7 +280,6 @@
 			<key variable="citation-number" />
 		</sort>
 		<layout suffix=".">
-			<text variable="citation-number" suffix=".&#9;" />
 			<group delimiter=" " suffix=" ">
 				<text macro="author-note" suffix=","/>
 				<text macro="title-note" />
@@ -260,7 +287,6 @@
 			<choose>
 				<if position="subsequent">
 					<group delimiter=", ">
-						<text value="op. cit." font-style="italic" />
 						<text macro="pages-note" />
 					</group>
 				</if>
